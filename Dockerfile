@@ -1,7 +1,9 @@
-FROM ubuntu
-RUN apt-get update
-RUN apt-get install nginx -y
-COPY index.html /var/www/html/
-EXPOSE 8081
-CMD [“nginx”,”-g”,”daemon off;”]
+FROM ubuntu:18.04
 
+# copy files required for the app to run
+COPY hospital-web /usr/src/app/
+
+# tell the port number the container should expose
+EXPOSE 8096
+
+# run the application
